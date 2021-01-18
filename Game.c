@@ -1,8 +1,8 @@
 #include<stdio.h>
 
-/*int main(){
+int main(){
 	system("Color f0 && title Game");
-  int x=223,d=1,w=1,s=1,a=1,i;
+  int x=223,d=0,w=0,s=0,a=0,i;
   char movi;
   printf("\n%c\n",x);
   menu:movi=getch();
@@ -36,7 +36,7 @@
       printf("%c",x);
       s++;
       goto menu;
-		case 'a':
+		case 'a'://<--Non funziona
 			system("cls");
 			for(i=0;i<a;i++){
 				printf("\n");
@@ -50,13 +50,12 @@
 			printf("%c",x);
 			a++;
 			goto menu;
+		case 'w':
+			for(i=0;i<w;i++){
+				//Cosa scrivere?
+			}
     default:
 			printf("%c",x);
 			goto menu;
   }
-
-}*/
-
-int main(){
-	printf("carletto \b");
 }
