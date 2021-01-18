@@ -1,2 +1,2 @@
 # Game
-Game in C
+Game developed in C
