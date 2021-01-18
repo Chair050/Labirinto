@@ -1,6 +1,7 @@
 #include<stdio.h>
 
 int main(){
+	system("Color f0");
   int x=223,d=0,i,a=0;
   char mov;
   printf("\n%c\n",x);
