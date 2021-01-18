@@ -1,0 +1,3 @@
+Da modificare il movimento
+  -Fatto il movimento a destra e in basso
+Fare il gioco completo
