@@ -19,7 +19,7 @@ int main(){
     case 's':
       system("cls");
       for(i=0;i<a;i++){
-        printf("\nw");
+        printf("\n");
       }
       printf("%c",x);
       a++;
