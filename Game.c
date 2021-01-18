@@ -13,7 +13,7 @@ int main(){
         printf(" ");
       }
       printf("%c",x);
-      d++;
+      d+;
       goto menu;
     case 's':
       system("cls");
