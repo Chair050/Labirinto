@@ -10,40 +10,40 @@ int main(){
 	switch(movi){
     case 'd':
 			system("cls");
-			for(i=0;i<s;i++){
+			for(i=0;i<(s-w);i++){
 				printf("\n");
 			}
 			for(i=0;i<d;i++){
 				printf(" ");
-      }
+     		 }
 			for(i=0;i<a;i++){
 				printf("\b");
 			}
-      printf("%c",x);
-      d++;
-      goto menu;
+      		printf("%c",x);
+     		 d++;
+     		 goto menu;
     case 's':
 			system("cls");
-      for(i=0;i<s;i++){
-        printf("\n");
-      }
-			for(i=0;i<d;i++){
-				printf(" ");
-      }
-			for(i=0;i<a;i++){
-				printf("\b");
-			}
-      printf("%c",x);
-      s++;
-      goto menu;
-		case 'a'://<--Non funziona
+		      for(i=0;i<(s-w);i++){
+	        printf("\n");
+	  	    }
+				for(i=0;i<d;i++){
+					printf(" ");
+	  	    }
+				for(i=0;i<a;i++){
+					printf("\b");
+				}
+	      printf("%c",x);
+	      s++;
+	      goto menu;
+		case 'a':
 			system("cls");
-			for(i=0;i<a;i++){
+			for(i=0;i<(s-w);i++){
 				printf("\n");
 			}
 			for(i=0;i<d;i++){
 				printf(" ");
-      }
+      		}
 			for(i=0;i<a;i++){
 				printf("\b");
 			}
@@ -51,9 +51,19 @@ int main(){
 			a++;
 			goto menu;
 		case 'w':
-			for(i=0;i<w;i++){
-				//Cosa scrivere?
+			system("cls");
+			for(i=0;i<(s-w);i++){
+				printf("\n");
 			}
+			for(i=0;i<d;i++){
+				printf(" ");
+      		}
+			for(i=0;i<a;i++){
+				printf("\b");
+			}
+			printf("%c",x);
+			w++;
+			goto menu;
     default:
 			printf("%c",x);
 			goto menu;
