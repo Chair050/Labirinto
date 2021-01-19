@@ -1,7 +1,36 @@
 #include<stdio.h>
+#include<stdlib.h>
+/*I Comandi Commentati cioè
+-//FILE*v=fopen("Game Output.txt","w");
+-//fprintf(...);
+-//fclose(...);
+Sono comandi per il debug cioè per stampare su un file txt le coordinate e il tasto premuto
+*/
+void GenOstacolo(){//<--Da sistemare(Bugga il movimento)
+	int i,z=1;
+	for(i=0;i<10;i++){
+		printf("\n");
+	}
+	for(i=0;i<10;i++){
+		printf(" ");
+	}
+	printf("%c",z);
+
+}
+
+void ConOstacolo(Xpos,Ypos){
+	if(Xpos==10 && Ypos==10){
+		printf("\n---------------------------\n");
+		printf("        GAME OVER          \n");
+		printf("---------------------------\n");
+		//fclose(v);
+		exit(0);
+	}
+}
 
 int main(){
 	system("Color f0 && title Game");
+	//FILE*v=fopen("Game Output.txt","w");
   int x=223,d=0,w=0,s=0,a=0,i;
   int Xpos=0,Ypos=0;
   char movi;
@@ -15,94 +44,100 @@ int main(){
 	exit(0);
   }
   system("cls");
+	printf("%c",x);
   menu:movi=getch();
   movi=tolower(movi);
+	//fprintf(v,"\nCommand :%c\t",movi);
 	switch(movi){
     case 'd':
     		Xpos=0;
-    		Ypos=0;
-			system("cls");
-			for(i=0;i<(s-w);i++){
-				printf("\n");
-			}
-			for(i=0;i<d;i++){
-				printf(" ");
-      		}
-			for(i=0;i<a;i++){
-				printf("\b");
-			}
-			printf("%c",x);
-			Ypos+=(s-w);
-			Xpos+=(d-a);
-     		d++;
+	    	Ypos=0;
+				d++;
+				system("cls");
+
+				for(i=0;i<(s-w);i++){
+					printf("\n");
+				}
+				for(i=0;i<d;i++){
+					printf(" ");
+	      		}
+				for(i=0;i<a;i++){
+					printf("\b");
+				}
+				printf("%c",x);
+				Ypos+=(s-w);
+				Xpos+=(d-a);
+				GenOstacolo();
+				//fprintf(v,"Coord. X: %d Y:%d",Xpos,Ypos);
      		goto menu;
     case 's':
-			Xpos=0;
-    		Ypos=0;
-			system("cls");
-			for(i=0;i<(s-w);i++){
-				printf("\n");
-			}
-			for(i=0;i<d;i++){
-				printf(" ");
-      		}
-			for(i=0;i<a;i++){
-				printf("\b");
-			}
-			Ypos+=(s-w);
-			Xpos+=(d-a);
-			printf("%c",x);
-	      s++;
+				Xpos=0;
+				Ypos=0;
+				s++;
+				system("cls");
+				for(i=0;i<(s-w);i++){
+					printf("\n");
+				}
+				for(i=0;i<d;i++){
+					printf(" ");
+						}
+				for(i=0;i<a;i++){
+					printf("\b");
+				}
+				printf("%c",x);
+				Ypos+=(s-w);
+				Xpos+=(d-a);
+				GenOstacolo();
+				//fprintf(v,"Coord. X: %d Y:%d",Xpos,Ypos);
 	      goto menu;
 		case 'a':
 			Xpos=0;
-    		Ypos=0;
+			Ypos=0;
+			a++;
 			system("cls");
 			for(i=0;i<(s-w);i++){
 				printf("\n");
 			}
 			for(i=0;i<d;i++){
 				printf(" ");
-      		}
+					}
 			for(i=0;i<a;i++){
 				printf("\b");
 			}
+			printf("%c",x);
 			Ypos+=(s-w);
 			Xpos+=(d-a);
-			printf("%c",x);
-			a++;
+			GenOstacolo();
+			//fprintf(v,"Coord. X: %d Y:%d",Xpos,Ypos);
 			goto menu;
 		case 'w':
 			Xpos=0;
-    		Ypos=0;
+			Ypos=0;
+			w++;
 			system("cls");
 			for(i=0;i<(s-w);i++){
 				printf("\n");
 			}
 			for(i=0;i<d;i++){
 				printf(" ");
-      		}
+					}
 			for(i=0;i<a;i++){
 				printf("\b");
 			}
 			printf("%c",x);
 			Ypos+=(s-w);
 			Xpos+=(d-a);
-			w++;
+			GenOstacolo();
+			//fprintf(v,"Coord. X: %d Y:%d",Xpos,Ypos);
 			goto menu;
 		case 27:
 			exit(0);
     default:
 			printf("debug: Xpos: %d Ypos: %d",Xpos,Ypos);
-			if(Xpos==10 && Ypos==10){
-				printf("\n---------------------------\n");
-				printf("        GAME OVER          \n");
-				printf("---------------------------\n");
-				exit(0);
-			}
 			goto menu;
   }
 }/*
 int main(){
 	printf("%d",getch());
+
 }*/
