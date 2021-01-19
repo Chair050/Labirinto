@@ -5,6 +5,19 @@
 -//fprintf(...);
 -//fclose(...);
 Sono comandi per il debug cioè per stampare su un file txt le coordinate e il tasto premuto
+
+la funzione GenOstacolo dovrebbe far ritornare a 0 il cursore in questo modo non è condizionato al movimento del cubo
+
+Lista Funzioni:
+-GenOstacolo
+		Genera l'ostacolo(al momento non funzionante)
+-ConOstacolo
+		Fa un controllo se l'utente ha raggiunto l'ostacolo(funzionante)
+
+
+DA-FARE:
+-Sitemare la funzione GenOstacolo
+-Avere un'idea generale di cosa deve fare il gioco
 */
 void GenOstacolo(){//<--Da sistemare(Bugga il movimento)
 	int i,z=1;
@@ -68,6 +81,7 @@ int main(){
 				Ypos+=(s-w);
 				Xpos+=(d-a);
 				GenOstacolo();
+				ConOstacolo(Xpos,Ypos);
 				//fprintf(v,"Coord. X: %d Y:%d",Xpos,Ypos);
      		goto menu;
     case 's':
@@ -136,8 +150,4 @@ int main(){
 			printf("debug: Xpos: %d Ypos: %d",Xpos,Ypos);
 			goto menu;
   }
-}/*
-int main(){
-	printf("%d",getch());
-
-}*/
+}
