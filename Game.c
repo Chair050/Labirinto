@@ -1,6 +1,5 @@
 #include<stdio.h>
 
-
 int main(){
 	system("Color f0 && title Game");
   int x=223,d=0,w=0,s=0,a=0,i;
@@ -8,8 +7,8 @@ int main(){
   char movi;
   do{
 	system("cls");
-	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\tWELCOME BACK TO THE MOVING!A GAME ON MOVING\n");
-	printf("\t\t\t\t\t  PRESS ENTER TO START or ESC to exit   \n");
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\tWELCOME BACK TO THE MOVING!A GAME ON MOVING\n");
+	printf("\t\t\t\t\t\t\t PRESS ENTER TO START or ESC to exit   \n");
 	movi=getch();
   }while(!(movi==13 || movi==27));
   if(movi==27){
