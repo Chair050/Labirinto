@@ -18,6 +18,9 @@ Lista Funzioni:
 DA-FARE:
 -Sitemare la funzione GenOstacolo
 -Avere un'idea generale di cosa deve fare il gioco
+
+????????
+Rifare tutto il codice da capo
 */
 void GenOstacolo(){//<--Da sistemare(Bugga il movimento)
 	int i,z=1;
