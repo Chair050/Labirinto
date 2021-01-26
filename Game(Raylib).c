@@ -10,6 +10,15 @@
 ********************************************************************************************/
 
 #include "raylib.h"
+#include<stdlib.h>//<--Per la funzione exit
+
+void InizioDraw(){
+    BeginDrawing();
+    ClearBackground(BLACK);
+    DrawText("Per Uscire premi il tasto X", 90, 30, 17, GREEN);
+    DrawText("Per Ingrandire lo schermo premi il tasto F",50,50,10,GREEN);
+    //Ricordarsi di mettere EndDrawing(); alla fine
+}
 
 int main(){
     const int AltSchermo = 800;
@@ -18,45 +27,28 @@ int main(){
     SetTargetFPS(60);
     
     while(!WindowShouldClose()){
-        BeginDrawing();
-        ClearBackground(BLACK);
-        DrawText("Per Uscire premi il tasto X", 60, 50, 17, GREEN);
-        DrawText("Per Ingrandire lo schermo premi il tasto F",50,50,10,GREEN);
-        EndDrawing();
-      
-        menu:if(IsKeyDown(KEY_W)==true){
-            BeginDrawing();
-            ClearBackground(BLACK);
-            
+    menu:InizioDraw();
+        if(IsKeyDown(KEY_W)==true){
+            InizioDraw();
             DrawText("Stai premendo il tasto W ", 190, 200, 20, GREEN);
-            
             EndDrawing();
             goto menu;
         }
         else if(IsKeyDown(KEY_S)==true){
-            BeginDrawing();
-            ClearBackground(BLACK);
-            
+            InizioDraw();
             DrawText("Stai premendo il tasto S ", 190, 200, 20, GREEN);
-            
             EndDrawing();
             goto menu;
         }
         else if(IsKeyDown(KEY_A)==true){
-            BeginDrawing();
-            ClearBackground(BLACK);
-            
+            InizioDraw();
             DrawText("Stai premendo il tasto A ", 190, 200, 20, GREEN);
-            
             EndDrawing();
             goto menu;
         }
         else if(IsKeyDown(KEY_D)==true){
-            BeginDrawing();
-            ClearBackground(BLACK);
-            
+            InizioDraw();
             DrawText("Stai premendo il tasto D", 190, 200, 20, GREEN);
-            
             EndDrawing();
             goto menu;
         }
@@ -67,13 +59,11 @@ int main(){
             ToggleFullscreen();
         }
         else{
-            BeginDrawing();
-            
+            InizioDraw();
             DrawText("Non Stai premendo nessun tasto ", 190, 200, 20, GREEN);
-            
             EndDrawing();
             goto menu;
-        } 
+        }
     }
     CloseWindow();
     
