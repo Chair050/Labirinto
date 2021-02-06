@@ -10,13 +10,17 @@
 ********************************************************************************************/
 
 #include "raylib.h"
-#include<stdlib.h>//<--Per la funzione exit
-
-int ChDraw(int Xpos, int Ypos, float Radius){
+/*TO-DO:
+    -Pausa
+    -Labirinto
+    -Sistemare menù iniziale
+*/
+int ChDraw(int Xpos, int Ypos){
     BeginDrawing();
     ClearBackground(BLACK);
-    DrawCircle(Xpos,Ypos,Radius,GREEN); 
-    EndDrawing();
+    DrawRectangle(Xpos,Ypos,40,40,GREEN); 
+    DrawText(TextFormat("Xpos: %d \nYpos: %d",Xpos,Ypos),Xpos+10,Ypos+10,10,GREEN);   
+    DrawRectangle(20,120,40,455,RED);
 }
 
 void InizioDraw(){
@@ -27,57 +31,84 @@ void InizioDraw(){
     DrawText("Premi ENTER per iniziare",80,70,17,GREEN);
     EndDrawing();
 }
-    
+    //20,550 20,95
 
 int main(){
-    const int AltSchermo = 1366;
-    const int LargSchermo = 768;
-    int Xpos = 20,Ypos = 20;
-    const float Cradius = 15;
-    InitWindow(AltSchermo,LargSchermo,"The Moving - A game");
     
+    const int AltSchermo = 800;
+    const int LargSchermo = 600;
+    int Xpos = 20,Ypos = 20;
+    bool pause = false;
+    bool collision = false;         // Collision detection
+    Rectangle Player = { Xpos,Ypos,40,40 };
+    Rectangle Ostacoli = {90,30,650,40};
+    InitWindow(AltSchermo,LargSchermo,"The Moving - A game");
     SetTargetFPS(60);
     HideCursor();
     
     while(!WindowShouldClose()){
+        
+   
         InizioDraw();
         if(IsKeyDown(KEY_ENTER)==true){
-          menu:if(IsKeyDown(KEY_W)==true){
-                if(Ypos>20){
+    /*menu:BeginDrawing();
+        ClearBackground(BLACK);
+        DrawText(TextFormat("Box position Y: %03i", Xpos),150,70,17,GREEN); 
+        EndDrawing();*/
+        // Pause Box A movement
+        menu:pause = false;
+        if (IsKeyPressed(KEY_P)) pause = !pause;
+        if(!pause){
+        if(IsKeyDown(KEY_W)==true){
+            if(Ypos>20){
                     Ypos-=5;
-                }
-                ChDraw(Xpos,Ypos,Cradius);
+               }
+                ChDraw(Xpos,Ypos);
+                DrawRectangleRec(Ostacoli, BLUE);
+                EndDrawing();
                 goto menu;
             }
             else if(IsKeyDown(KEY_S)==true){
-                Ypos+=5;
-                ChDraw(Xpos,Ypos,Cradius);
+                if(Ypos>=575){
+                    
+                    ChDraw(Xpos,Ypos);
+                }
+                else{ 
+                    Ypos+=5;
+                    ChDraw(Xpos,Ypos);
+                }
                 goto menu;
             }
             else if(IsKeyDown(KEY_A)==true){
-                if(Ypos>20){
+                if(Xpos>20){
                     Xpos-=5;
                 }
-                ChDraw(Xpos,Ypos,Cradius);
+                ChDraw(Xpos,Ypos);
                 goto menu;
             }
             else if(IsKeyDown(KEY_D)==true){
-                Xpos+=5;
-                ChDraw(Xpos,Ypos,Cradius);
+                if(Xpos>=775){
+                    ChDraw(Xpos,Ypos); 
+                }
+                else{
+                    Xpos+=5;
+                    ChDraw(Xpos,Ypos);
+                }
                 goto menu;
             }
             else if(IsKeyDown(KEY_X)==true){
-                exit(0);
+                CloseWindow();
             }
             else if(IsKeyDown(KEY_F)==true){
-                ToggleFullscreen();
+                MaximizeWindow();
                 goto menu;
             }
             else{
-                ChDraw(Xpos,Ypos,Cradius);
+                ChDraw(Xpos,Ypos);
                 goto menu;
             }
         }
+      }
     }
     CloseWindow();
     
