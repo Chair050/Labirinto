@@ -31,44 +31,31 @@ void InizioDraw(){
     DrawText("Premi ENTER per iniziare",80,70,17,GREEN);
     EndDrawing();
 }
-    //20,550 20,95
 
 int main(){
     
     const int AltSchermo = 800;
     const int LargSchermo = 600;
     int Xpos = 20,Ypos = 20;
-    bool pause = false;
+    /*bool pause = false;
     bool collision = false;         // Collision detection
     Rectangle Player = { Xpos,Ypos,40,40 };
-    Rectangle Ostacoli = {90,30,650,40};
+    Rectangle Ostacoli = {90,30,650,40};*/
     InitWindow(AltSchermo,LargSchermo,"The Moving - A game");
     SetTargetFPS(60);
-    HideCursor();
     
     while(!WindowShouldClose()){
-        
-   
         InizioDraw();
-        if(IsKeyDown(KEY_ENTER)==true){
-    /*menu:BeginDrawing();
-        ClearBackground(BLACK);
-        DrawText(TextFormat("Box position Y: %03i", Xpos),150,70,17,GREEN); 
-        EndDrawing();*/
-        // Pause Box A movement
-        menu:pause = false;
-        if (IsKeyPressed(KEY_P)) pause = !pause;
-        if(!pause){
-        if(IsKeyDown(KEY_W)==true){
+    menu:if(IsKeyDown(KEY_W)==true){
             if(Ypos>20){
                     Ypos-=5;
                }
                 ChDraw(Xpos,Ypos);
-                DrawRectangleRec(Ostacoli, BLUE);
+                //DrawRectangleRec(Ostacoli, BLUE);
                 EndDrawing();
                 goto menu;
             }
-            else if(IsKeyDown(KEY_S)==true){
+        else if(IsKeyDown(KEY_S)==true){
                 if(Ypos>=575){
                     
                     ChDraw(Xpos,Ypos);
@@ -79,14 +66,14 @@ int main(){
                 }
                 goto menu;
             }
-            else if(IsKeyDown(KEY_A)==true){
+        else if(IsKeyDown(KEY_A)==true){
                 if(Xpos>20){
                     Xpos-=5;
                 }
                 ChDraw(Xpos,Ypos);
                 goto menu;
             }
-            else if(IsKeyDown(KEY_D)==true){
+        else if(IsKeyDown(KEY_D)==true){
                 if(Xpos>=775){
                     ChDraw(Xpos,Ypos); 
                 }
@@ -96,21 +83,28 @@ int main(){
                 }
                 goto menu;
             }
-            else if(IsKeyDown(KEY_X)==true){
+        else if(IsKeyDown(KEY_X)==true){
                 CloseWindow();
             }
-            else if(IsKeyDown(KEY_F)==true){
+        else if(IsKeyDown(KEY_F)==true){
                 MaximizeWindow();
                 goto menu;
             }
-            else{
+        else{
                 ChDraw(Xpos,Ypos);
                 goto menu;
             }
-        }
-      }
     }
     CloseWindow();
     
     return 0;
-}
+    }
+    
+    
+   /*menu:BeginDrawing();
+        ClearBackground(BLACK);
+        DrawText(TextFormat("Box position Y: %03i", Xpos),150,70,17,GREEN); 
+        EndDrawing();
+        // Pause Box A movement
+        if (IsKeyPressed(KEY_P)) pause = !pause;
+        if(!pause){*/

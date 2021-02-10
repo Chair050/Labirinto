@@ -1,16 +1,24 @@
 /*******************************************************************************************
 *
-*   raylib [shapes] example - collision area
+*   The Moving - A game 
 *
-*   This example has been created using raylib 2.5 (www.raylib.com)
+*   This game has been created using raylib 2.5 (www.raylib.com)
 *   raylib is licensed under an unmodified zlib/libpng license (View raylib.h for details)
 *
-*   Copyright (c) 2013-2019 Ramon Santamaria (@raysan5)
+*   Copyright (c) 2021 Chair050 (@Chair050)
 *
 ********************************************************************************************/
 
 #include "raylib.h"
 #include <stdlib.h>     // Required for abs()
+
+int ChDraw(int Xpos, int Ypos, Rectangle rec){
+    BeginDrawing();
+    ClearBackground(BLACK);
+    boxB.x=
+    DrawText(TextFormat("Xpos: %d \nYpos: %d",Xpos,Ypos),Xpos+10,Ypos+10,10,GREEN);   
+    DrawRectangle(20,120,40,455,RED);
+}
 
 int main(void)
 {
@@ -36,13 +44,10 @@ int main(void)
     bool collision = false;         // Collision detection
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-    //----------------------------------------------------------
 
-    // Main game loop
-    while (!WindowShouldClose())    // Detect window close button or ESC key
+    while (!WindowShouldClose())    
     {
         
-        // Update player-controlled-box (box02)
         boxB.x = GetMouseX() - boxB.width/2;
         boxB.y = GetMouseY() - boxB.height/2;
 
@@ -53,34 +58,30 @@ int main(void)
         if (collision) boxCollision = GetCollisionRec(boxA, boxB);
 
         
-        //-----------------------------------------------------
-
-        // Draw
-        //-----------------------------------------------------
         BeginDrawing();
 
             ClearBackground(RAYWHITE);
 
             DrawRectangle(0, 0, screenWidth, screenUpperLimit, collision? RED : BLACK);
-
+                
             DrawRectangleRec(boxA, GOLD);
             DrawRectangleRec(boxB, BLUE);
 
             if (collision)
             {
-                // Draw collision message
-                DrawText("COLLISION!",20,10, 20, BLACK);
+                DrawText("GAME OVER!",300,220, 40, BLACK);
+                //DrawText("Press X")
+                if(IsKeyDown('X')){
+                    EndDrawing();
+                    CloseWindow();
+                }
                 
             }
 
         EndDrawing();
-        //-----------------------------------------------------
     }
-
-    // De-Initialization
-    //---------------------------------------------------------
-    CloseWindow();        // Close window and OpenGL context
-    //----------------------------------------------------------
+    CloseWindow();       
+    
 
     return 0;
 }
