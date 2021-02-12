@@ -1,2 +1,3 @@
 # Game
-Game developed in C
+A Game developed in C by Chair050 and Endpool.
+**infinite loop**
