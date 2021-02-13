@@ -2,10 +2,10 @@
 *
 *   The Moving - A game 
 *
-*   This game has been created using raylib 2.5 (www.raylib.com)
+*   This game has been created using raylib (www.raylib.com)
 *   raylib is licensed under an unmodified zlib/libpng license (View raylib.h for details)
 *
-*   Copyright (c) 2021 Chair050 (@Chair050)
+*   GNU License
 *
 ********************************************************************************************/
 
@@ -40,30 +40,36 @@ int main(void)
     /*Roba Utile
     Rectangle NameRectangle = {Xpos ,Ypos ,Width,Height};
     DrawText(TextFormat("SCORE: %i", score), 280, 130, 40, MAROON);-->Per stampare come se fosse in un printf
-    
+    DrawText(TextFormat("Time: %02.02f ms", GetFrameTime()*1000), 200, 220, 20, BLACK);
     */
     bool collision = false;         // Collision detection
     bool victory = false;           //Victory Detection
     bool pause = false;             //Pause Detector
     
-    int x=0,y=0;                        //For Movement
-    int Time = 0;
+    int x=0,y=0;                    //For Movement
     
-    int score = 0;
-    int hiscore= 100000000;
+    int Time = 0;                   //Time
+    int hiscore = 0;                //Hiscore
+    int score = 0;                  //Score
+    
+    int Color=0;
+    
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
    
 
-    while (!WindowShouldClose())    
-    {  
+    while (!WindowShouldClose())      
+    {   
         BeginDrawing();
         ClearBackground(RAYWHITE);
-        DrawText("Press S to start",250,280, 60, MAROON);
+        DrawText(TextFormat("SCORE: %i", score), 280, 130, 20, MAROON);
+        DrawText(TextFormat("HI-SCORE: %i", hiscore), 210, 200, 30, BLACK);
+        DrawText("Press ENTER to start",400,280, 60, MAROON);
+        //DrawText("Press S for settings",350,300,40,MAROON);
         EndDrawing();
-        if(IsKeyDown('S')){
+        if(IsKeyDown(KEY_ENTER)){
             while(1<2){
                 if(!collision && !victory && !pause){
-                    
+                    /*
                     Box.x+=x;
                     Box.y+=y;
                     if(IsKeyReleased(KEY_W)){
@@ -81,15 +87,28 @@ int main(void)
                     else if(IsKeyPressed(KEY_S)){
                         y=+3;
                         x=0;
+                    }*/
+                    if(IsKeyDown(KEY_W)){
+                        Box.y-=2;
+                    }
+                    else if(IsKeyDown(KEY_A)){
+                        Box.x-=2;
+                    }
+                    else if(IsKeyDown(KEY_D)){
+                        Box.x+=3;
+                    }
+                    else if(IsKeyDown(KEY_S)){
+                        Box.y+=3;
+                    }
+                    
+                    else if(IsKeyPressed(KEY_P)){
+                        pause = !pause;
                     }
                     Time++;
                 }
                 
-        
                 // Check boxes collision
-                
                 if(!collision){
-                    /*
                     collision = CheckCollisionRecs(boxA,Box);
                     if(collision){
                        goto collision;
@@ -141,43 +160,37 @@ int main(void)
                     collision = CheckCollisionRecs(boxO,Box);
                     if(collision){
                         goto collision;
-                    }*/
+                    }
                     victory = CheckCollisionRecs(VictoryBox,Box);
                 }
                 
-        
+                
                 BeginDrawing();
 
-                ClearBackground(RAYWHITE);
+                    ClearBackground(RAYWHITE);
 
-                
-            DrawRectangleRec(boxA, GOLD);
-            DrawRectangleRec(boxB, GOLD);
-            DrawRectangleRec(boxC, GOLD);
-            DrawRectangleRec(boxD, GOLD);
-            DrawRectangleRec(boxE, GOLD);
-            DrawRectangleRec(boxF, GOLD);
-            DrawRectangleRec(boxG, GOLD);
-            DrawRectangleRec(boxH, GOLD);
-            DrawRectangleRec(boxI, GOLD);
-            DrawRectangleRec(boxL, GOLD);
-            DrawRectangleRec(boxM, GOLD);
-            DrawRectangleRec(boxN, GOLD);
-            DrawRectangleRec(boxO, GOLD);
-            DrawRectangleRec(VictoryBox, SKYBLUE);
-            DrawRectangleRec(Box, BLUE);
-            
-            
-            if(victory){
-                score=Time;
-                if(score<hiscore){
-                    hiscore=score;
-                }
-                DrawText("VICTORY!",400,280, 60, BLACK);
-                DrawText("Press X to Exit or Press M to play again",320,340, 20, BLACK);
-                DrawText(TextFormat("SCORE: %i", score), 360, 380, 20, BLACK);
-                DrawText(TextFormat("HI-SCORE: %i", hiscore), 360, 410, 30, BLACK);
-                 if(IsKeyDown('X')){
+                        
+                    DrawRectangleRec(boxA, GOLD);
+                    DrawRectangleRec(boxB, GOLD);
+                    DrawRectangleRec(boxC, GOLD);
+                    DrawRectangleRec(boxD, GOLD);
+                    DrawRectangleRec(boxE, GOLD);
+                    DrawRectangleRec(boxF, GOLD);
+                    DrawRectangleRec(boxG, GOLD);
+                    DrawRectangleRec(boxH, GOLD);
+                    DrawRectangleRec(boxI, GOLD);
+                    DrawRectangleRec(boxL, GOLD);
+                    DrawRectangleRec(boxM, GOLD);
+                    DrawRectangleRec(boxN, GOLD);
+                    DrawRectangleRec(boxO, GOLD);
+                    DrawRectangleRec(VictoryBox, SKYBLUE);
+                    DrawRectangleRec(Box, BLUE);
+                    
+                    
+                    if(victory){
+                        DrawText("VICTORY!",400,280, 60, SKYBLUE);
+                        DrawText("Press X to Exit or Press M to play again",320,340, 20, SKYBLUE);
+                        if(IsKeyDown('X')){
                             EndDrawing();
                             CloseWindow();
                         }
@@ -187,14 +200,14 @@ int main(void)
                             victory = !victory;
                             Box.x=10;
                             Box.y=10;
-                            x=0;
-                            y=0;
-                            Time = 0;
-                            score = 0;
+                            score=Time;
+                            if(score>hiscore){
+                                hiscore=score;
+                            }
                         }
-            }
+                    }
                     
-                   /* collision:if (collision)
+                    collision:if (collision)
                     {   
                         
                         DrawText("GAME OVER!",400,280, 40, RED);
@@ -214,7 +227,7 @@ int main(void)
                             Time = 0;
                         }
                         
-                    }*/
+                    }
                     DrawText(TextFormat("Time: %i", Time), 800, 10, 20, LIME);
                     
                     if(pause){
@@ -225,11 +238,38 @@ int main(void)
                             pause = !pause;
                         }
                     }
-                    EndDrawing();
+
+                EndDrawing();
             }
         }
-
-        
+        /*
+        else if(IsKeyDown(KEY_S)){
+            menis:ClearBackground(RAYWHITE);
+            BeginDrawing();
+            DrawText("Choose a color for the player",350,260, 40, MAROON);
+            DrawText("RED",350,260, 30, MAROON);
+            DrawText("BLUE",350,280,30,MAROON);
+            DrawText("YELLOW",350,300,30,MAROON);
+            DrawText("Press X to return to the start menu",350,300,30,MAROON);
+            EndDrawing();
+            if(IsKeyDown('R')){
+                Color=1;
+            }
+            else if(IsKeyDown('B')){
+                Color=2;
+            }
+            else if(IsKeyDown('Y')){
+                Color=3;
+            }
+            else if(IsKeyDown(KEY_X)){
+                goto StartMenu;
+            }
+            else{
+                goto menis;
+            }
+            
+        }
+        */
     }
     CloseWindow();       
     
