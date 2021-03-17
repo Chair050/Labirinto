@@ -89,7 +89,7 @@ int main(void)
                 // Check boxes collision
                 
                 if(!collision){
-                    /*
+                    
                     collision = CheckCollisionRecs(boxA,Box);
                     if(collision){
                        goto collision;
@@ -141,7 +141,7 @@ int main(void)
                     collision = CheckCollisionRecs(boxO,Box);
                     if(collision){
                         goto collision;
-                    }*/
+                    }
                     victory = CheckCollisionRecs(VictoryBox,Box);
                 }
                 
@@ -194,7 +194,7 @@ int main(void)
                         }
             }
                     
-                   /* collision:if (collision)
+                    collision:if (collision)
                     {   
                         
                         DrawText("GAME OVER!",400,280, 40, RED);
@@ -214,7 +214,7 @@ int main(void)
                             Time = 0;
                         }
                         
-                    }*/
+                    }
                     DrawText(TextFormat("Time: %i", Time), 800, 10, 20, LIME);
                     
                     if(pause){
