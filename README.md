@@ -1,3 +1,3 @@
-# THE MOVING
+# Labirinto
 Un Gioco scritto in C                                                                                          
 
